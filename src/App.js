@@ -3,6 +3,7 @@ import './App.css';
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
+
 const App = () => {
 
   const address = "http://localhost:3003/products"
@@ -101,7 +102,7 @@ const App = () => {
 
   return (
       <>
-      <div className="container">
+
       <h1> Web Store </h1>
 
       <form onSubmit={handleNewProductSubmit}>
@@ -113,19 +114,21 @@ const App = () => {
           </form>
 
           <br/>
-
+            <div className="container ">
+              <div className="row">
           <h2>Products</h2>
           {newInventory.length > 0 ?
                         newInventory.map((product) => {
                             return(
-                                    <div class="product">
-                                      <img src={product.image} alt=''/>
+
+                                    <div className="col">
+                                      <img src={product.image} className="img-fluid" alt=''/>
                                       <h3 class= "price">${product.price}</h3>
                                       <h3 class="name">{product.name}</h3>
                                       <p class="description">{product.description}</p>
 
                                         <div>
-                                          <button class="delete" onClick={(event)=>{handleDelete(product)}}>delete
+                                          <button class="btn btn-success" onClick={(event)=>{handleDelete(product)}}>delete
                                           </button>
                                           <details>
                                             <summary>
@@ -144,10 +147,12 @@ const App = () => {
 
 
                                     </div>
+
                             )
                         })
                 : <h1>false</h1>}
                   </div>
+                    </div>
 
         </>
 
